@@ -1,12 +1,24 @@
 __pycache__/
 *.pyc
-jarvis/data/
+luna_core/data/
 .env
 *.egg-info/
 dist/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .venv/
 .claude/
 
 *.log
 *.wav
+
+# wake-word / TTS voice model binaries — large, fetched separately
+*.onnx
+*.onnx.json
+luna_core/data/models/
+luna_core/data/voices/
+
+# frontend
+frontend/node_modules/
+frontend/dist/

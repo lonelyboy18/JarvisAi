@@ -1,0 +1,117 @@
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: #0f0b1a;
+  color: #e9e2f5;
+  font-family: system-ui, sans-serif;
+}
+
+.luna-app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.luna-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.luna-header h1 {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.luna-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d94f4f;
+}
+
+.luna-status-dot.connected {
+  background: #3fbf78;
+}
+
+.luna-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.luna-hint {
+  color: #8f7fae;
+  font-size: 13px;
+  text-align: center;
+  max-width: 480px;
+  margin: 0;
+}
+
+.luna-controls button,
+.luna-chat-form button {
+  background: #2a1f47;
+  color: #e9e2f5;
+  border: 1px solid #4a3a7a;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.luna-controls button:hover:not(:disabled),
+.luna-chat-form button:hover:not(:disabled) {
+  background: #3a2a63;
+}
+
+.luna-controls button:disabled,
+.luna-chat-form button:disabled,
+.luna-chat-form input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.luna-chat-form {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.luna-chat-form input {
+  flex: 1;
+  background: #17122a;
+  border: 1px solid #4a3a7a;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #e9e2f5;
+  font-size: 14px;
+}
+
+.luna-transcript {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.luna-transcript-entry {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #17122a;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.luna-transcript-user {
+  background: #2a1f47;
+}

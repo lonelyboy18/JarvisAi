@@ -1,11 +1,37 @@
+server:
+  host: 0.0.0.0
+  port: 8756
+
+# Wake word ships DISABLED — see ROADMAP.md "Phase 1: wake word" for why and
+# exactly how to finish it (train "Hey Luna" via the Colab notebook, drop
+# the .onnx here, flip enabled: true).
 wake_word:
-  model: hey_jarvis
+  enabled: false
+  model_path: null
+  phrase: "hey luna"
   threshold: 0.5
   chunk_size: 1280
+  cooldown_seconds: 2.0
+  interrupt_cooldown_seconds: 3.0
+
 stt:
   model: small
-  device: cuda
+  device: cpu
   compute_type: int8
+  sample_rate: 16000
+  silence_threshold: 0.012
+  speech_threshold: 0.015
+  silent_chunks_needed: 7
+  max_seconds: 30
+
+tts:
+  engine: piper
+  voice: en_US-lessac-high
+  voice_model_path: luna_core/data/voices/en_US-lessac-high.onnx
+  speed: 1.0
+  sample_rate: 22050
+  piper_executable: null
+
 llm:
   active_provider: ollama
   temperature: 0.7
@@ -15,19 +41,17 @@ llm:
       label: Ollama (Local)
       model: qwen3:8b
       base_url: http://localhost:11434
+
 context:
   max_messages: 10
-  summarize_after: 8
-  max_tokens: 2500
-tts:
-  voice: af_heart
-  speed: 1.1
-memory:
-  db_path: jarvis/data/memory.db
-  chroma_path: jarvis/data/chroma
-  top_k: 3
-tools:
-  allowed_paths:
-  - ~/Documents
-  - ~/Desktop
-  code_timeout: 10
+
+# No tools exist yet (Phase 2). default_level: deny means anything not
+# explicitly listed here is refused by PermissionEngine — see
+# luna_core/permissions/engine.py.
+permissions:
+  default_level: deny
+  tools: {}
+
+logging:
+  level: INFO
+  dir: luna_core/data/logs

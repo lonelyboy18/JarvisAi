@@ -1,0 +1,89 @@
+.luna-orb-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.luna-orb {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.luna-orb-core {
+  position: absolute;
+  inset: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f4d9ff, #9b6bd1 55%, #5a2f8f 100%);
+  box-shadow: 0 0 40px rgba(155, 107, 209, 0.55);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  animation: luna-breathe 4s ease-in-out infinite;
+}
+
+.luna-orb-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(155, 107, 209, 0.35);
+}
+
+.luna-orb-ring-2 {
+  inset: -14px;
+  border-color: rgba(155, 107, 209, 0.18);
+}
+
+.luna-orb-label {
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b9a4d6;
+}
+
+.luna-orb-wrap[data-state="wake"] .luna-orb-core,
+.luna-orb-wrap[data-state="listening"] .luna-orb-core {
+  background: radial-gradient(circle at 35% 30%, #dff6ff, #52b7e0 55%, #1c6f96 100%);
+  box-shadow: 0 0 55px rgba(82, 183, 224, 0.65);
+  animation: luna-pulse-fast 1.1s ease-in-out infinite;
+}
+
+.luna-orb-wrap[data-state="thinking"] .luna-orb-core {
+  background: radial-gradient(circle at 35% 30%, #fff3d6, #e0a83f 55%, #8f5f14 100%);
+  box-shadow: 0 0 45px rgba(224, 168, 63, 0.6);
+  animation: luna-pulse-fast 1.6s ease-in-out infinite;
+}
+
+.luna-orb-wrap[data-state="executing"] .luna-orb-core {
+  background: radial-gradient(circle at 35% 30%, #d9ffe6, #3fbf78 55%, #146b3f 100%);
+  box-shadow: 0 0 45px rgba(63, 191, 120, 0.6);
+  animation: luna-pulse-fast 0.8s ease-in-out infinite;
+}
+
+.luna-orb-wrap[data-state="speaking"] .luna-orb-core {
+  background: radial-gradient(circle at 35% 30%, #ffe0f2, #e05fa8 55%, #8a1f5c 100%);
+  box-shadow: 0 0 55px rgba(224, 95, 168, 0.65);
+  animation: luna-pulse-fast 0.5s ease-in-out infinite;
+}
+
+.luna-orb-wrap[data-state="interrupted"] .luna-orb-core {
+  background: radial-gradient(circle at 35% 30%, #fff0d6, #d97a2f 55%, #7a3a0f 100%);
+  box-shadow: 0 0 45px rgba(217, 122, 47, 0.6);
+  animation: none;
+}
+
+.luna-orb-wrap[data-state="error"] .luna-orb-core {
+  background: radial-gradient(circle at 35% 30%, #ffd9d9, #d94f4f 55%, #7a1f1f 100%);
+  box-shadow: 0 0 45px rgba(217, 79, 79, 0.6);
+  animation: none;
+}
+
+@keyframes luna-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes luna-pulse-fast {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
